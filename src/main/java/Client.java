@@ -2,12 +2,12 @@ import business.domain.Posicao;
 import business.domain.Resultado;
 import business.service.DistanciaEuclidianaService;
 import util.DistanciaEuclidiana;
-import util.ManipuladorArquivo;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
+import static util.ManipuladorArquivo.*;
 
 public class Client {
 
@@ -16,6 +16,6 @@ public class Client {
         DistanciaEuclidianaService server = (DistanciaEuclidianaService) registry.lookup("DistanciaEuclidianaService");
         Posicao posicao = server.getPosicao(1);
         List<Resultado> resultados =  DistanciaEuclidiana.calculaDistancia(posicao.getPosicaoInicial(), posicao.getPosicaoFinal());
-        ManipuladorArquivo.gravaResultados(resultados);
+        gravaResultados(resultados);
     }
 }
